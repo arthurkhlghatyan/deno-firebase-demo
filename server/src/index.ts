@@ -1,15 +1,12 @@
-import { serve } from './deps.ts';
+import { opine } from './deps.ts';
+import createOrder from './routes/create-order.ts';
+import updateOrder from './routes/update-order.ts';
 
-const server = serve({
-  hostname: '0.0.0.0', 
-  port: 8000
-});
+const app = opine();
 
-console.log(`HTTP webserver running. Access it at: http://localhost:8080/`);
+// Setup routes
+app.post('/orders', createOrder);
+app.put('/orders/:id', updateOrder);
 
-for await (const request of server) {
-  let bodyContent = "Your user-agent is:\n\n";
-  bodyContent += request.headers.get("user-agent") || "Unknown";
-
-  request.respond({ status: 200, body: bodyContent });
-}
+app.listen(8000);
+console.log('App is running at http://localhost:8000');

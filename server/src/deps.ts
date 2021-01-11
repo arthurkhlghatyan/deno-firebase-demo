@@ -1,1 +1,2 @@
-export { serve } from 'https://deno.land/std@0.83.0/http/server.ts';
+export { opine } from "https://deno.land/x/opine@1.0.2/mod.ts";
+export type { Request, Response } from 'https://deno.land/x/opine@1.0.2/mod.ts';
