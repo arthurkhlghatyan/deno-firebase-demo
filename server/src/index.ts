@@ -1,6 +1,9 @@
 import { opine } from './deps.ts';
 import createOrder from './routes/create-order.ts';
 import updateOrder from './routes/update-order.ts';
+import { getGoogleAuthToken } from './auth.ts';
+
+const token = await getGoogleAuthToken();
 
 const app = opine();
 
