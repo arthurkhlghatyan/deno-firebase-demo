@@ -4,6 +4,6 @@
 import { getConfiguredClient } from './firebase.ts';
 
 const projectId = 'construyo-coding-challenge';
-const client = getConfiguredClient(projectId);
+const client = await getConfiguredClient(projectId);
 
 export default client;

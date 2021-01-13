@@ -25,27 +25,21 @@ Deno.test('POST /orders creates an order', async () => {
     .post('/orders')
     .send(order)
     .expect(200)
-    .expect('Content-Type', /json/)
-    .end((err) => {
-      if (err) throw err;
-    });
+    .expect('Content-Type', /json/);
 });
 
 Deno.test('PUT /orders/:id updates a single order', async () => { 
   // For now, make sure order exists in db
   // Alternatively create order before running update test
-  const orderId = '';
+  const orderId = '-MQvsLfeptYc3jApRZiy';
   const orderUpdateFields: OrderUpdateFields = {
     title: 'Order #1',
     bookingDate: 1554284960000
   };
 
   await superdeno(app)
-    .put(`/order/${orderId}`)
+    .put(`/orders/${orderId}`)
     .send(orderUpdateFields)
     .expect(200)
-    .expect('Content-Type', /json/)
-    .end((err) => {
-      if (err) throw err;
-    });
+    .expect('Content-Type', /json/);
 });
