@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 
 interface PrivateRouteProp {
   children: React.ReactChild | React.ReactChild[];
+  isLoggedIn: boolean;
 }
 
-function PrivateRoute({ children }: PrivateRouteProp) {
+function PrivateRoute({ children, isLoggedIn }: PrivateRouteProp) {
   return (
     <Fragment>
-      {children}
+      {isLoggedIn ? children : <Redirect to="/sign-in" />}
     </Fragment>
   );
 }

@@ -1,10 +1,18 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import PrivateRoute from '../private-route';
 
-test('PrivateRoute does not render child when not logged in', () => {
+test('PrivateRoute renders content when user is logged in', () => {
 
-  const { getByText } = render(<PrivateRoute>Hello World</PrivateRoute>);
+  const { getByText } = render(
+    <MemoryRouter>
+      <PrivateRoute 
+        isLoggedIn={true}>
+          Hello World
+      </PrivateRoute>
+    </MemoryRouter>
+  );
 
-  expect(('Hello World')).not.toBeInTheDocument();
+  expect(getByText('Hello World')).toBeInTheDocument();
 });

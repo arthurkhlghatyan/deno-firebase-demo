@@ -1,9 +1,29 @@
 import { useState } from 'react';
+import firebase from 'firebase';
 
-export default () => {
+const useSignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isFailed, setFailed] = useState(false);
 
-  const signIn = (email: string, password: string) => {};
+  const signIn = async (email: string, password: string) => {
+    setIsLoading(true);
 
-  return [isLoading, signIn];
+    try {
+      // Persist session information in localStorage
+      const localStoragePersistance = firebase.auth.Auth.Persistence.LOCAL;
+
+      await firebase.auth().setPersistence(localStoragePersistance);
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+    } catch(error) {
+      setFailed(true);
+    }
+  };
+
+  return {
+    isLoading,
+    isFailed,
+    signIn
+  };
 };
+
+export default useSignIn; 
