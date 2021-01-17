@@ -4,6 +4,7 @@ export {
   getNumericDate as getNumericDateJWT
 } from 'https://deno.land/x/djwt@v2.0/mod.ts';
 export { encodeUrl } from 'https://deno.land/x/encodeurl@1.0.0/mod.ts';
+export { opineCors } from "https://deno.land/x/cors@v1.2.1/mod.ts";
 
 export {
   validate,

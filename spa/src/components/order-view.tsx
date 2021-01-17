@@ -1,18 +1,17 @@
 import React from 'react';
 import moment from 'moment';
 import { Card, Icon, Placeholder } from 'semantic-ui-react';
-import type { Order, OrderUpdateFields } from '../types';
+import type { Order } from '../types';
 
 interface OrderViewProp {
   isLoading: boolean;
   orderId: string;
   order: Order | undefined;
-  onOrderUpdate: {
-    (orderId: string, fields: OrderUpdateFields): void
-  }
+  onToggleOrderForm: Function;
 }
 
 function OrderView({
+  onToggleOrderForm,
   isLoading,
   order,
 }: OrderViewProp) {
@@ -36,13 +35,16 @@ function OrderView({
   } = order;
 
   const bookingDateFormatted = typeof bookingDate === 'number' ? 
-    moment(bookingDate).format('MM-DD-YYYY hh:mm') : 
+    moment(bookingDate).format('MM-DD-YYYY') : 
     '';
 
   return (
     <Card fluid>
       <Card.Content>
         <Card.Header>
+          <a onClick={() => onToggleOrderForm()}>
+            <Icon name="edit" title="Edit Order" />
+          </a>
           {title}
         </Card.Header>
         <Card.Meta>Booked: {bookingDateFormatted}</Card.Meta>

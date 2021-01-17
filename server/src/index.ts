@@ -1,10 +1,11 @@
-import { opine, json } from './deps.ts';
+import { opine, json, opineCors } from './deps.ts';
 import createOrder from './routes/create-order.ts';
 import updateOrder from './routes/update-order.ts';
 import './fcl.ts';
 
 const app = opine();
 
+app.use(opineCors());
 app.use(json());
 
 // Setup routes

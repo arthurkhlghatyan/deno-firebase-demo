@@ -7305,7 +7305,7 @@ jws@^4.0.0:
     jwa "^2.0.0"
     safe-buffer "^5.0.1"
 
-keyboard-key@^1.1.0:
+keyboard-key@^1.0.2, keyboard-key@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/keyboard-key/-/keyboard-key-1.1.0.tgz#6f2e8e37fa11475bb1f1d65d5174f1b35653f5b7"
   integrity sha512-qkBzPTi3rlAKvX7k0/ub44sqOfXeLc/jcnGGmj5c7BJpU8eDrEVPyhCvNYAaoubbsLm9uGWwQJO1ytQK1a9/dQ==
@@ -7843,7 +7843,7 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-moment@^2.29.1:
+moment@^2.22.2, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
@@ -10286,6 +10286,16 @@ selfsigned@^1.10.7:
   integrity sha512-2P4PtieJeEwVgTU9QEcwIRDQ/mXJLX8/+I3ur+Pg16nS8oNbrGxEso9NyYWy8NAmXiNl4dlAp5MwoNeCWzON4w==
   dependencies:
     node-forge "^0.10.0"
+
+semantic-ui-calendar-react@^0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/semantic-ui-calendar-react/-/semantic-ui-calendar-react-0.15.3.tgz#eb25826076a2967d9bb04e0567824366f5eb6fe4"
+  integrity sha512-cXlg/dJf0z/dydnol1GCy9ssccXBAGYhmka9W2KNXqqW+B0mgPhu6ugWOjGD4i99e3dnNl1QVqYvQpQcpkcEIg==
+  dependencies:
+    keyboard-key "^1.0.2"
+    lodash "^4.17.15"
+    moment "^2.22.2"
+    prop-types "^15.6.2"
 
 semantic-ui-css@^2.4.1:
   version "2.4.1"

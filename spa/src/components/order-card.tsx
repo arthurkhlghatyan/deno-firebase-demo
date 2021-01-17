@@ -11,7 +11,7 @@ interface OrderCardProp {
 }
 
 function OrderCard({
-  viewOrderUrl, 
+  viewOrderUrl,
   order: { 
     title,
     bookingDate,
@@ -20,7 +20,7 @@ function OrderCard({
   }
 }: OrderCardProp) {
   const bookingDateFormatted = typeof bookingDate === 'number' ? 
-    moment(bookingDate).format('MM-DD-YYYY hh:mm') : 
+    moment(bookingDate).format('MM-DD-YYYY') : 
     '';
 
   return (

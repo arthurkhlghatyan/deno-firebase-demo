@@ -20,9 +20,13 @@ test('Ensure OrderView renders properly', () => {
     }
   }
   const orderId = '1';
-  const onOrderUpdate = (orderId: string, fields: OrderUpdateFields) => {};
 
-  const { getByText } = render(<OrderView isLoading={false} onOrderUpdate={onOrderUpdate} order={order} orderId={orderId} />);
+  const { getByText } = render(<OrderView
+    isLoading={false}
+    order={order}
+    orderId={orderId} 
+    onToggleOrderForm={() => {}} />
+  );
 
   expect(getByText('Basic Order')).toBeInTheDocument();
 });

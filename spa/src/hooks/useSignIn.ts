@@ -16,6 +16,7 @@ const useSignIn = () => {
       await firebase.auth().signInWithEmailAndPassword(email, password);
     } catch(error) {
       setFailed(true);
+      setIsLoading(false);
     }
   };
 
