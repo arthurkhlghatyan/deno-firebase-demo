@@ -2,7 +2,7 @@ import React from 'react';
 
 function OrderRoute() {
   return (
-    <div />
+    <div>Order</div>
   );
 }
 

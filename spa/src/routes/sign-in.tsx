@@ -2,7 +2,7 @@ import React from 'react';
 
 function SignInRoute() {
   return (
-    <div />
+    <div>Sign IN</div>
   );
 }
 
