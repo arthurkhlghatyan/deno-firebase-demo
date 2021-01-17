@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Header, Placeholder, Card } from 'semantic-ui-react';
+import React, { Fragment } from 'react';
+import { Placeholder, Card } from 'semantic-ui-react';
 import OrderCard from './order-card';
 import type { Order } from '../types';
 
@@ -10,10 +10,7 @@ interface OrderListProp {
 
 function OrderList(props: OrderListProp) {
   return (
-    <Container text style={{ marginTop: '2rem' }}>
-      <Header as="h1">
-        Orders
-      </Header>
+    <Fragment>
       {props.isLoading ? (
         <Placeholder>
           <Placeholder.Line />
@@ -31,13 +28,13 @@ function OrderList(props: OrderListProp) {
                   orderId={orderId}
                   order={props.orders[orderId]}
                   key={orderId}
-                  viewOrderUrl={`/orders/${orderId}`} />
+                  viewOrderUrl={`/order/${orderId}`} />
               );
             })
           }
         </Card.Group>
       )}
-    </Container>
+    </Fragment>
   );
 }
 
