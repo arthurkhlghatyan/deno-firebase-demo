@@ -14,3 +14,16 @@
         cd server/
         deno test --allow-net --allow-read src/tests.ts
     ```
+
+## Front end Installation
+
+- Run 
+    ```bash
+        cd spa/
+        yarn install
+        yarn start
+    ```
+- To run tests
+    ```bash
+        yarn test
+    ```
