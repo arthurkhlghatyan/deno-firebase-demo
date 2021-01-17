@@ -1,8 +1,12 @@
 import React from 'react';
+import useOrders from '../hooks/useOrders';
+import OrderList from '../components/order-list';
 
 function OrdersRoute() {
+  const { isLoading, orders } = useOrders();
+
   return (
-    <div>Orders</div>
+    <OrderList isLoading={isLoading} orders={orders} />
   );
 }
 

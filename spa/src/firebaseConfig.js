@@ -8,4 +8,4 @@ const config = {
   appId: '1:275103082078:web:3d55c84dee230264'
 };
 
-export default config; 
+export default config;

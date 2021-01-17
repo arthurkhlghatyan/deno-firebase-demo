@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import type { Order } from '../../types';
 import OrderCard from '../order-card';
@@ -21,10 +22,14 @@ test('Ensure OrderCard renders properly', () => {
   }
   const orderId = '1';
 
-  const { getByText } = render(<OrderCard
-    order={order}
-    orderId={orderId}
-    viewOrderUrl={`/orders/${orderId}`} />);
+  const { getByText } = render(
+    <MemoryRouter>
+      <OrderCard
+        order={order}
+        orderId={orderId}
+        viewOrderUrl={`/orders/${orderId}`} />
+    </MemoryRouter>
+  );
 
-  expect(getByText('Berlin')).toBeInTheDocument();
+  expect(getByText('Basic Order')).toBeInTheDocument();
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import type { Order } from '../../types';
 import OrderList from '../order-list';
@@ -22,7 +23,11 @@ test('Ensure OrderList renders properly', () => {
   
   const orders = { '1234': order };
 
-  const { getByText } = render(<OrderList orders={orders} />);
+  const { getByText } = render(
+    <MemoryRouter>
+      <OrderList isLoading={false} orders={orders} />
+    </MemoryRouter>
+  );
 
   expect(getByText('Basic Order')).toBeInTheDocument();
 });
