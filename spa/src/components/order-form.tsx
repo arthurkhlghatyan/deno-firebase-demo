@@ -1,22 +1,29 @@
-import React, { FormEvent, Fragment, useState } from 'react';
+import React, { FormEvent, Fragment, useState, useEffect } from 'react';
 import moment from 'moment';
-import { Form, Segment, Button } from 'semantic-ui-react';
+import { Form, Segment, Button, Message } from 'semantic-ui-react';
 import { DateInput } from 'semantic-ui-calendar-react';
 
-import type { OrderUpdateFields } from '../types';
+import type { OrderUpdateFields, Order } from '../types';
 
 interface OrderFormProp {
   isLoading: boolean;
   isFailed: boolean;
+  order: Order;
   orderId: string;
   onOrderUpdate: {
     (orderId: string, fields: OrderUpdateFields): void
   }
 }
 
-function OrderForm(props: OrderFormProp) {
+function OrderForm({ order, orderId, onOrderUpdate, isLoading, isFailed }: OrderFormProp) {
   const [title, setTitle] = useState('');
   const [bookingDate, setBookingDate] = useState('');
+  const dateFormat = 'MM-DD-YYYY';
+
+  useEffect(() => {
+    setTitle(order.title);
+    setBookingDate(moment(order.bookingDate).format(dateFormat));
+  }, [order]);
 
   const onBookingDateChange = (
     event: React.SyntheticEvent,
@@ -25,9 +32,9 @@ function OrderForm(props: OrderFormProp) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    props.onOrderUpdate(props.orderId, {
+    onOrderUpdate(orderId, {
       title,
-      bookingDate: moment(bookingDate, 'DD-MM-YYYY').valueOf()
+      bookingDate: moment(bookingDate, dateFormat).valueOf()
     });
   };
 
@@ -45,6 +52,7 @@ function OrderForm(props: OrderFormProp) {
             onChange={(evt) => setTitle(evt.target.value)}/>
           
           <DateInput
+            dateFormat={dateFormat}
             iconPosition="left"
             popupPosition='bottom left'
             placeholder="Booking Date"
@@ -53,7 +61,7 @@ function OrderForm(props: OrderFormProp) {
           />
 
           <Button
-            disabled={false}
+            disabled={isLoading}
             type="submit"
             color="teal"
             size="large"
@@ -62,6 +70,11 @@ function OrderForm(props: OrderFormProp) {
           </Button>
         </Segment>
       </Form>
+      {isFailed && (
+        <Message>
+          Failed to update the order
+        </Message>
+      )}
     </Fragment>
   );
 }

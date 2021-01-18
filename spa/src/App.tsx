@@ -22,6 +22,7 @@ function App() {
         {!isLoggedIn ? <SignInRoute /> : <Redirect to="/orders" /> }
       </Route>
       <Switch>
+        <Redirect from="/" to="/orders" exact />
         <Route path="/order/:id">
           <PrivateRoute isLoggedIn={isLoggedIn}>
             <OrderRoute />

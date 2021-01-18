@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import type { OrderUpdateFields } from '../types';
+import type { Order, OrderUpdateFields } from '../types';
 
 export default () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isFailed, setFailed] = useState(false);
 
-  const updateOrder = async (orderId: string, fields: OrderUpdateFields) => {
+  const updateOrder = async (
+    orderId: string,
+    fields: OrderUpdateFields,
+    updateOrderState: Function
+  ) => {
     setIsLoading(true);
 
     try {
@@ -18,6 +22,10 @@ export default () => {
         body: JSON.stringify(fields)
       })
 
+      updateOrderState((order: Order) => ({
+        ...order,
+        ...fields,
+      }));
       setIsLoading(false);
     } catch(error) {
       setFailed(true);

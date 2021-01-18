@@ -24,6 +24,7 @@ const useOrder = (orderId: string) => {
 
   return {
     isLoading,
+    updateOrderState: setOrder,
     order: order as Order
   };
 };

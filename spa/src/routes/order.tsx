@@ -9,7 +9,7 @@ import Layout from '../components/layout';
 
 function OrderRoute() {
   const { id } = useParams<{id: string}>();
-  const { isLoading, order } = useOrder(id);
+  const { isLoading, order, updateOrderState } = useOrder(id);
   const [ isEditing, setIsEditing ] = useState(false);
 
   const {
@@ -30,9 +30,10 @@ function OrderRoute() {
         <OrderForm
           isLoading={orderUpdateLoading}
           isFailed={isFailed}
+          order={order}
           orderId={id}
           onOrderUpdate={(orderId: string, fields: OrderUpdateFields) => {
-            updateOrder(orderId, fields);
+            updateOrder(orderId, fields, updateOrderState);
           }}
         />
       ): <></>}
